@@ -10,7 +10,7 @@ terraform {
     bucket = "sgr-remote-state-dev"
     key = "roboshop-dev-vpc"
     region = "us-east-1"
-    use_lockfile= true
+    use_lockfile= false
     encrypt = true
   }
 }
