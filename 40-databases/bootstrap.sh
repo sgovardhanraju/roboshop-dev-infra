@@ -13,7 +13,8 @@ ANSIBLE_DIR=ansible-roboshop-roles-tf
 
 mkdir -p $REPO_DIR
 mkdir -p /var/log/roboshop/
-sudo touch ansible.log
+sudo touch /var/log/roboshop/ansible.log
+chmod +x /var/log/roboshop/ansible.log
 
 cd $REPO_DIR
 
