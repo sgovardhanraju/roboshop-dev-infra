@@ -1,3 +1,4 @@
+# copied from daws86s git repository
 variable "project_name" {
     default = "roboshop"
 }
@@ -9,16 +10,17 @@ variable "environment" {
 variable "sg_names" {
     default = [
         # databases
-        "mongodb","redis","mysql","rabbitmq",
+        "mongodb", "redis", "mysql", "rabbitmq",
         # backend
         "catalogue", "user", "cart", "shipping", "payment",
         # frontend
         "frontend",
         # bastion
         "bastion",
-        # frontend load balance
+        # frontend load balancer
         "frontend_alb",
         # Backend ALB
-        "backend_alb"
+        "backend_alb",
+        "open_vpn"
     ]
 }

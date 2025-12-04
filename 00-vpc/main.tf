@@ -1,6 +1,6 @@
+# copied from daws86s git repository
 module "vpc" {
     source = "git::https://github.com/sgovardhanraju/terraform-aws-vpc.git?ref=main"
-    
     # VPC
     vpc_cidr = var.vpc_cidr
     project_name = var.project_name
@@ -13,9 +13,8 @@ module "vpc" {
     # private subnets
     private_subnet_cidrs = var.private_subnet_cidrs
 
-    # # database subnets
-     database_subnet_cidrs = var.database_subnet_cidrs
+    # database subnets
+    database_subnet_cidrs = var.database_subnet_cidrs
 
-     is_peering_required = true
+    is_peering_required = true
 }
-
