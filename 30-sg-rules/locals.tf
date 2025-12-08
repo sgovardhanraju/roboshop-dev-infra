@@ -19,10 +19,10 @@ locals {
     #         sg_id = local.mysql_sg_id
     #         port = 22
     #     }
-        # mysql_3306 = {
-        #     sg_id = local.mysql_sg_id
-        #     port = 3306
-        # }
+        mysql_3306 = {
+            sg_id = local.mysql_sg_id
+            port = 3306
+        }
         redis = {
             sg_id = local.redis_sg_id
             port = 22
