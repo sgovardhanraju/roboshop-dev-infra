@@ -39,10 +39,10 @@ locals {
             sg_id = local.catalogue_sg_id
             port = 22
         }
-        # catalogue_8080 = {
-        #     sg_id = local.catalogue_sg_id
-        #     port = 8080
-        # }
+        catalogue_8080 = {
+            sg_id = local.catalogue_sg_id
+            port = 8080
+        }
         # user = {
         #     sg_id = local.user_sg_id
         #     port = 22
