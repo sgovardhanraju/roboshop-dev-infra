@@ -11,7 +11,7 @@ locals {
     # cart_sg_id = data.aws_ssm_parameter.cart_sg_id.value
     # shipping_sg_id = data.aws_ssm_parameter.shipping_sg_id.value
     # payment_sg_id = data.aws_ssm_parameter.payment_sg_id.value
-    # frontend_sg_id = data.aws_ssm_parameter.frontend_sg_id.value
+    frontend_sg_id = data.aws_ssm_parameter.frontend_sg_id.value
     # open_vpn_sg_id = data.aws_ssm_parameter.open_vpn_sg_id.value
 
     # vpn_ingress_rules = {
@@ -59,10 +59,10 @@ locals {
         #     sg_id = local.payment_sg_id
         #     port = 22
         # }
-        # frontend = {
-        #     sg_id = local.frontend_sg_id
-        #     port = 22
-        # }
+        frontend = {
+            sg_id = local.frontend_sg_id
+            port = 22
+        }
         backend_alb = {
             sg_id = local.backend_alb_sg_id
             port = 80
