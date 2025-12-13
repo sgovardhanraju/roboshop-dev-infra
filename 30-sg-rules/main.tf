@@ -7,6 +7,7 @@ resource "aws_security_group_rule" "mongodb_bastion" {
   to_port           = 22
 }
 
+# Mongodb accepting connections from user on port 27017
 resource "aws_security_group_rule" "mongodb_catalogue" {
   type              = "ingress"
   security_group_id = local.mongodb_sg_id
@@ -16,6 +17,7 @@ resource "aws_security_group_rule" "mongodb_catalogue" {
   to_port           = 27017
 }
 
+# Mongodb accepting connections from user on port 27017
 resource "aws_security_group_rule" "mongodb_user" {
   type              = "ingress"
   security_group_id = local.mongodb_sg_id
@@ -25,7 +27,7 @@ resource "aws_security_group_rule" "mongodb_user" {
   to_port           = 27017
 }
 
-# Refis accepting connections from bastion on port 22
+# Redis accepting connections from bastion on port 22
 resource "aws_security_group_rule" "redis_bastion" {
   type              = "ingress"
   security_group_id = local.redis_sg_id
@@ -35,6 +37,7 @@ resource "aws_security_group_rule" "redis_bastion" {
   to_port           = 22
 }
 
+#Redis accepting connections from user on port 6379
 resource "aws_security_group_rule" "redis_user" {
   type              = "ingress"
   security_group_id = local.redis_sg_id
@@ -90,7 +93,6 @@ resource "aws_security_group_rule" "rabbitmq_payment" {
   to_port           = 5672
 }
 
-
 ###### Catalogue SG Rules ######
 resource "aws_security_group_rule" "catalogue_bastion" {
   type              = "ingress"
@@ -109,16 +111,6 @@ resource "aws_security_group_rule" "catalogue_backend_alb" {
   protocol          = "tcp"
   to_port           = 8080
 }
-
-# This is the mistake we did, cart can't access catalogue directly, it should be through backend ALB
-/* resource "aws_security_group_rule" "catalogue_cart" {
-  type              = "ingress"
-  security_group_id = local.catalogue_sg_id
-  source_security_group_id = local.cart_sg_id
-  from_port         = 8080
-  protocol          = "tcp"
-  to_port           = 8080
-} */
 
 ##### User SG Rules #####
 resource "aws_security_group_rule" "user_bastion" {
@@ -158,7 +150,7 @@ resource "aws_security_group_rule" "cart_backend_alb" {
   to_port           = 8080
 }
 
-#### SHipping SG Rules #####
+#### Shipping SG Rules #####
 resource "aws_security_group_rule" "shipping_bastion" {
   type              = "ingress"
   security_group_id = local.shipping_sg_id
