@@ -8,7 +8,7 @@ resource "aws_instance" "catalogue" {
     tags = merge (
         local.common_tags,
         {
-            Name = "${local.common_name_suffix}-catalogue" # roboshop-dev-catalogue
+            Name = "${local.common_name_suffix}-catalogue" # roboshop-dev-mongodb
         }
     )
 }
@@ -49,7 +49,7 @@ resource "aws_ec2_instance_state" "catalogue" {
 }
 
 resource "aws_ami_from_instance" "catalogue" {
-  name  ="${local.common_name_suffix}-catalogue-ami"
+  name = "${local.common_name_suffix}-catalogue-ami"
   source_instance_id = aws_instance.catalogue.id
   depends_on = [aws_ec2_instance_state.catalogue]
   tags = merge (
@@ -103,7 +103,7 @@ resource "aws_launch_template" "catalogue" {
     )
   }
 
-# tags attached to the volume created by instance
+  # tags attached to the volume created by instance
   tag_specifications {
     resource_type = "volume"
 
@@ -122,6 +122,7 @@ resource "aws_launch_template" "catalogue" {
         Name = "${local.common_name_suffix}-catalogue"
       }
   )
+
 }
 
 resource "aws_autoscaling_group" "catalogue" {
@@ -166,6 +167,7 @@ resource "aws_autoscaling_group" "catalogue" {
   }
 
 }
+
 
 resource "aws_autoscaling_policy" "catalogue" {
   autoscaling_group_name = aws_autoscaling_group.catalogue.name
